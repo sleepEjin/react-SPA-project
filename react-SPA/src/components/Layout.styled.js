@@ -58,6 +58,19 @@ export const NavLink = styled(Link)`
     }
 `
 
+export const LoginButton = styled(Link)`
+    padding: 10px 20px;
+    background: #5833ffff;;
+    color: white;
+    text-decoration: none; 
+    border-radius: 5px;
+  
+  &:hover {
+    background: #5833ffd7;
+    color: white;
+  }
+`
+
 export const MainContent = styled.main`
     max-width: 1200px;
     margin: 0 auto;

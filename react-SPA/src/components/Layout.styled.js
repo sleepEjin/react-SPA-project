@@ -71,6 +71,21 @@ export const LoginButton = styled(Link)`
   }
 `
 
+export const LogoutButton = styled.button`
+    padding: 10px 20px;
+    background: #ff9090ff; /* 로그아웃은 회색 계열 */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+  
+  &:hover {
+    background: #ffd1d1ff;
+  }
+`
+
 export const MainContent = styled.main`
     max-width: 1200px;
     margin: 0 auto;

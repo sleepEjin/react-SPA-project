@@ -18,25 +18,38 @@
 git clone https://github.com/sleepEjin/react-SPA-project.git
 
 # 2. 웹 애플리케이션 실행
-- 브라우저에서 접속
-http://localhost:8080/프로젝트명
+- npm run dev 실행해서 나오는 localhost 파일로 접속
 
 ## 📂 프로젝트 구조 (Directory Structure)
 src/
-├── components/      # 공통 컴포넌트 (Header, Layout 등)
-├── contexts/        # (구) 전역 상태 관리 (UserContext, PostContext)
+├── components/     # 공통 컴포넌트 (Header, Layout 등)
+
+├── contexts/        # (구) 전역 상태 관리(UserContextPostContext)
+
 ├── stores/          # Zustand 스토어 (useUserStore, usePostStore)
+
 ├── pages/           # 페이지 컴포넌트
+
 │   ├── Home.jsx         # 랜딩 페이지
+
 │   ├── Login.jsx        # 로그인
+
 │   ├── Signup.jsx       # 회원가입
+
 │   ├── IcelinkList.jsx  # 링크장 목록
+
 │   ├── Board.jsx        # 후기 게시판 목록
+
 │   ├── PostDetail.jsx   # 게시글 상세
+
 │   ├── PostWrite.jsx    # 게시글 작성
+
 │   └── MyPage.jsx       # 마이페이지
+
 ├── routes/          # 라우팅 설정 (Routes, routepaths)
+
 └── assets/          # 이미지 및 정적 파일
+
 
 ## 🌟 주요 기능 (Key Features)
 ✅ 아이스링크 정보 탐색 및 상세정보 조회

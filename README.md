@@ -21,6 +21,7 @@ git clone https://github.com/sleepEjin/react-SPA-project.git
 - npm run dev 실행해서 나오는 localhost 파일로 접속
 
 ## 📂 프로젝트 구조 (Directory Structure)
+```text
 src/
 ├── components/      # 공통 컴포넌트 (Header, Layout 등)
 ├── contexts/        # (구) 전역 상태 관리 (UserContext, PostContext)
@@ -36,7 +37,7 @@ src/
 │   └── MyPage.jsx       # 마이페이지
 ├── routes/          # 라우팅 설정 (Routes, routepaths)
 └── assets/          # 이미지 및 정적 파일
-
+```
 
 ## 🌟 주요 기능 (Key Features)
 ✅ 아이스링크 정보 탐색 및 상세정보 조회

@@ -1,10 +1,12 @@
-import React, { useState, useContext, useEffect } from 'react';
-import { AuthContext } from '../contexts/UserContext';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Card, Container, InfoRow } from './MyPage.styled';
+import { useUserStore } from '../stores/useUserStore';
 
 const MyPage = () => {
   const navigate = useNavigate();
+  const { currentUser } = useUserStore();
+  const [newNickname, setNewNickname] = useState('');
 
   useEffect(() => {
     if (!currentUser) {

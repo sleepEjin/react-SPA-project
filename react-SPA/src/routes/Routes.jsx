@@ -9,6 +9,7 @@ import Login from '../pages/Login'
 import PostDetail from '../pages/PostDetail'
 import PostWrite from '../pages/PostWrite'
 import MyPage from '../pages/MyPage'
+import SignUp from '../pages/Signup'
 
 const AppRoutes = () => {
   return (
@@ -26,6 +27,7 @@ const AppRoutes = () => {
                 
                 <Route path={ROUTES.LOGIN} element={<Login />}/>
                 <Route path={ROUTES.MYPAGE} element={<MyPage />}/>
+                <Route path={ROUTES.SIGNUP} element={<SignUp/>}/>
             </Route>
         </Routes>
     </BrowserRouter>

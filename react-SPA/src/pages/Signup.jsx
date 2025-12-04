@@ -1,11 +1,11 @@
-import React, { useState, useContext } from 'react'; // useContext 추가
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../contexts/UserContext'; // Context 불러오기
 import { Button, Container, Form, Input } from './Signup.styled';
+import { useUserStore } from '../stores/useUserStore';
 
 const SignUp = () => {
   const navigate = useNavigate();
-  const { signup } = useContext(AuthContext); // signup 함수 가져오기
+  const { signup } = useUserStore();
   
   const [formData, setFormData] = useState({
     id: '',

@@ -19,7 +19,7 @@ const RinkListPage = () => {
             <CardContent>
               <CardTitle>{rink.name}</CardTitle>
               <CardInfo>{rink.location}</CardInfo>
-              <CardInfo style={{color:'#007bff'}}>후기 보러가기</CardInfo>
+              <CardInfo style={{color:'#007bff'}}>후기 보기</CardInfo>
             </CardContent>
           </Card>
         ))}

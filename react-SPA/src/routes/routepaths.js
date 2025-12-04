@@ -5,6 +5,7 @@ export const ROUTES = {
     BOARD_DETAIL: '/board/:id',       
     BOARD_WRITE: '/board/write',       
     RINK_BOARD_WRITE: '/board/rink/:rinkId/write',
+    SIGNUP:'/signup',
     LOGIN: '/login',
     MYPAGE: '/MyPage',
 }

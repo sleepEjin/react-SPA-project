@@ -1,11 +1,10 @@
-// src/components/Header.jsx
-import React, { useContext } from 'react'
+import React from 'react'
 import { HeaderContainer, LoginButton, Logo, Nav, NavLink, NavLinks, LogoutButton } from './Layout.styled'
 import { ROUTES } from '../routes/routepaths'
-import { AuthContext } from '../contexts/UserContext'
+import { useUserStore } from '../stores/useUserStore'
 
 const Header = () => {
-  const { currentUser, logout } = useContext(AuthContext);
+  const { currentUser, logout } = useUserStore();
 
   return (
     <HeaderContainer>

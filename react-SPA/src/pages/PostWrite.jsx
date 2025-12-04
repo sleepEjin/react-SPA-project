@@ -1,14 +1,14 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { PostContext } from '../contexts/PostContext';
-import { AuthContext } from '../contexts/UserContext';
 import { ButtonGroup, CancelButton, Container, Description, FormGroup, Header, Input, Label, SubmitButton, TextArea, WriteCard } from './PostWrite.styled';
+import { usePostStore } from '../stores/usePostStore';
+import { useUserStore } from '../stores/useUserStore';
 
 const PostWrite = () => {
   const navigate = useNavigate();
   const { rinkId } = useParams();
-  const { handleAddPost } = useContext(PostContext);
-  const { currentUser } = useContext(AuthContext);
+  const { handleAddPost } = usePostStore();
+  const { currentUser } = useUserStore();
   
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
@@ -45,7 +45,7 @@ const PostWrite = () => {
     <Container>
       <WriteCard>
         <Header>
-          <h2>🖊️ {rinkId ? "방문 후기 작성" : "솔직 후기 작성"}</h2>
+          <h2>후기 작성</h2>
           <Description>
             다른 분들에게 도움이 되도록 솔직하고 생생한 이야기를 들려주세요.
           </Description>

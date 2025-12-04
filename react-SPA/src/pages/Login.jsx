@@ -1,11 +1,11 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { Container, Input, LoginButton, LoginForm, Title } from './login.styled';
-import { AuthContext } from '../contexts/UserContext';
 import { ROUTES } from '../routes/routepaths';
+import { useUserStore } from '../stores/useUserStore';
 
 const LoginPage = () => {
-  const { login } = useContext(AuthContext);
+  const { login } = useUserStore();
   const [userId, setUserId] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();

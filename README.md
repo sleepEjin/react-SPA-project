@@ -23,31 +23,18 @@ git clone https://github.com/sleepEjin/react-SPA-project.git
 ## 📂 프로젝트 구조 (Directory Structure)
 src/
 ├── components/     # 공통 컴포넌트 (Header, Layout 등)
-
 ├── contexts/        # (구) 전역 상태 관리(UserContextPostContext)
-
 ├── stores/          # Zustand 스토어 (useUserStore, usePostStore)
-
 ├── pages/           # 페이지 컴포넌트
-
 │   ├── Home.jsx         # 랜딩 페이지
-
 │   ├── Login.jsx        # 로그인
-
 │   ├── Signup.jsx       # 회원가입
-
 │   ├── IcelinkList.jsx  # 링크장 목록
-
 │   ├── Board.jsx        # 후기 게시판 목록
-
 │   ├── PostDetail.jsx   # 게시글 상세
-
 │   ├── PostWrite.jsx    # 게시글 작성
-
 │   └── MyPage.jsx       # 마이페이지
-
 ├── routes/          # 라우팅 설정 (Routes, routepaths)
-
 └── assets/          # 이미지 및 정적 파일
 
 

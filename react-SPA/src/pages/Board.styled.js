@@ -49,6 +49,7 @@ export const PostItem = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  cursor: pointer;
   
   &:hover {
     background-color: #fcfcfc;
@@ -63,4 +64,18 @@ export const PostTitle = styled.span`
 export const PostMeta = styled.span`
   font-size: 0.9rem;
   color: #888;
-`;
+`
+
+export const SearchInput = styled.input`
+  padding: 10px;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+`
+
+export const RinkInfoBox = styled.div`
+  display: flex; gap: 20px; background: white; padding: 20px; 
+  border-radius: 10px; margin-bottom: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  img { width: 200px; height: 150px; object-fit: cover; border-radius: 8px; }
+`

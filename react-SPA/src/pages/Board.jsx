@@ -1,47 +1,61 @@
-import React, { useState } from 'react';
-import { initialPosts } from '../contexts/data';
-import { BoardContainer, Button, HeaderSection, Input, PostItem, PostList, PostMeta, PostTitle, WriteSection } from './Board.styled';
+import React, { useState, useContext } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { PostContext } from '../contexts/PostContext';
+import { AuthContext } from '../contexts/UserContext';
+import { rinksData } from '../contexts/data';
+import { BoardContainer, Button, HeaderSection, PostItem, PostList, PostMeta, PostTitle, RinkInfoBox } from './Board.styled';
 
-const CommunityPage = ({ isLoggedIn }) => {
-  const [posts, setPosts] = useState(initialPosts);
-  const [title, setTitle] = useState("");
+const Board = () => {
+  const navigate = useNavigate();
+  const { rinkId } = useParams(); 
+  const { posts } = useContext(PostContext);
+  const { currentUser } = useContext(AuthContext);
+  const [searchTerm, setSearchTerm] = useState("");
 
-  const handlePost = () => {
-    if (!isLoggedIn) {
-      alert("로그인이 필요합니다.");
-      return;
-    }
-    if (!title) return;
-    const newPost = {
-      id: posts.length + 1,
-      title: title,
-      author: "익명",
-      date: new Date().toLocaleDateString()
-    };
-    setPosts([newPost, ...posts]);
-    setTitle("");
-  };
+  const rink = rinksData.find(r => r.id === Number(rinkId));
+
+  const rinkPosts = posts.filter(post => post.rinkId === Number(rinkId));
+  
+  const filteredPosts = rinkPosts.filter((post) => 
+    post.title?.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <BoardContainer>
+      {rink && (
+        <RinkInfoBox>
+          <img src={rink.img} alt={rink.name} />
+          <div>
+            <h2>{rink.name}</h2>
+            <p>{rink.location}</p>
+            <p>{rink.price}</p>
+            <p>{rink.desc}</p>
+          </div>
+        </RinkInfoBox>
+      )}
+
       <HeaderSection>
-        <h2>질문 게시판</h2>
-        <p>궁금한 점을 자유롭게 물어보세요!</p>
+        <h3>💬 방문 후기 ({filteredPosts.length})</h3>
+        <div style={{display:'flex', gap:'10px', marginTop:'10px'}}>
+           <input 
+            placeholder="후기 검색..." 
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            style={{padding:'10px', flex:1}}
+          />
+          <Button onClick={() => {
+            if (!currentUser) return alert("로그인이 필요합니다.");
+            navigate(`/board/rink/${rinkId}/write`);
+          }}>
+            후기 작성
+          </Button>
+        </div>
       </HeaderSection>
 
-      <WriteSection>
-        <Input
-          placeholder={isLoggedIn ? "제목을 입력하세요" : "로그인이 필요합니다"}
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          disabled={!isLoggedIn}
-        />
-        <Button onClick={handlePost} disabled={!isLoggedIn}>글쓰기</Button>
-      </WriteSection>
-
       <PostList>
-        {posts.map((post) => (
-          <PostItem key={post.id}>
+        {filteredPosts.length === 0 ? <p style={{textAlign:'center', padding:'20px'}}>첫 후기를 남겨주세요!</p> : null}
+        {filteredPosts.map((post) => (
+          <PostItem key={post.id} onClick={() => navigate(`/board/${post.id}`)}>
             <PostTitle>{post.title}</PostTitle>
             <PostMeta>{post.author} · {post.date}</PostMeta>
           </PostItem>
@@ -50,5 +64,5 @@ const CommunityPage = ({ isLoggedIn }) => {
     </BoardContainer>
   );
 };
+export default Board;
 
-export default CommunityPage;

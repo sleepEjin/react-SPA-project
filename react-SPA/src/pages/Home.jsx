@@ -9,7 +9,7 @@ const navigate = useNavigate();
     <HomeContainer>
       <HomeSection>
         <HomeTitle> SlippeReview </HomeTitle>
-        <HomeSubtitle>전국 아이스링크 정보와 생생한 후기를 만나보세요!</HomeSubtitle>
+        <HomeSubtitle>서울 아이스링크 정보와 생생한 후기를 만나보세요</HomeSubtitle>
         <StartButton onClick={() => navigate('/list')}>링크장 구경하러 가기</StartButton>
       </HomeSection>
     </HomeContainer>

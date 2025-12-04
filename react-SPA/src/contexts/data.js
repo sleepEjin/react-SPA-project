@@ -50,8 +50,21 @@ export const rinksData = [
   }
 ];
 
-// 2. 커뮤니티(질문) 게시글 데이터
 export const initialPosts = [
-  { id: 1, title: "초보인데 스케이트 뭐 사야 하나요?", author: "김빙상", date: "2023-12-01" },
-  { id: 2, title: "이번 주 목동 사람 많나요?", author: "이피겨", date: "2023-12-02" },
+  { 
+    id: 1, 
+    rinkId: 1, 
+    title: "롯데월드 대여화 상태 어떤가요?", 
+    content: "발볼 넓은 편인데 아픈가요?",
+    author: "김빙상", 
+    date: "2023-12-01" 
+  },
+  { 
+    id: 2, 
+    rinkId: 2, 
+    title: "목동 주말에 사람 많나요?", 
+    content: "눈치게임 실패할까봐 걱정입니다.",
+    author: "이피겨", 
+    date: "2023-12-02" 
+  },
 ];

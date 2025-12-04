@@ -1,20 +1,22 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Container, HelperText, Input, LoginButton, LoginForm, Title } from './login.styled';
+import React, { useState, useContext } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
+import { Container, Input, LoginButton, LoginForm, Title } from './login.styled';
+import { AuthContext } from '../contexts/UserContext';
+import { ROUTES } from '../routes/routepaths';
 
-const LoginPage = ({ onLogin }) => {
+const LoginPage = () => {
+  const { login } = useContext(AuthContext);
   const [userId, setUserId] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (userId === 'test' && password === '1234') {
-      alert(`환영합니다, ${userId}님!`);
-      onLogin();
+    
+    const success = login(userId, password);
+    
+    if (success) {
       navigate('/');
-    } else {
-      alert('아이디 또는 비밀번호를 확인해주세요.');
     }
   };
 
@@ -35,7 +37,12 @@ const LoginPage = ({ onLogin }) => {
           onChange={(e) => setPassword(e.target.value)} 
         />
         <LoginButton type="submit">로그인</LoginButton>
-        <HelperText>Test Account: test / 1234</HelperText>
+        
+        <div style={{marginTop: '10px', textAlign: 'center'}}>
+           <Link to={ROUTES.SIGNUP} style={{fontSize: '0.9rem', color: '#007bff'}}>
+             회원가입
+           </Link>
+        </div>
       </LoginForm>
     </Container>
   );

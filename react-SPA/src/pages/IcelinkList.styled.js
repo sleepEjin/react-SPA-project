@@ -53,3 +53,40 @@ export const CardInfo = styled.p`
   color: #666;
   font-size: 0.9rem;
 `;
+
+export const RinkInfoSection = styled.div`
+  display: flex;
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  margin-bottom: 30px;
+  gap: 30px;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+`;
+
+export const RinkImage = styled.img`
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+`;
+
+export const RinkDetails = styled.div`
+  flex: 1;
+  text-align: left;
+  
+  h2 { margin-top: 0; color: #333; }
+  p { margin: 10px 0; color: #555; font-size: 1.1rem; }
+`;
+
+export const SearchInput = styled.input`
+  padding: 10px;
+  width: 60%;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+`;

@@ -1,24 +1,26 @@
 // src/components/Header.jsx
-import React from 'react'
-import { HeaderContainer, LoginButton, Logo, Nav, NavLink, NavLinks, LogoutButton } from './Layout.styled' // LogoutButton 추가 필요 (아래 참조)
+import React, { useContext } from 'react'
+import { HeaderContainer, LoginButton, Logo, Nav, NavLink, NavLinks, LogoutButton } from './Layout.styled'
 import { ROUTES } from '../routes/routepaths'
+import { AuthContext } from '../contexts/UserContext'
 
-const Header = ({ isLoggedIn, onLogout }) => {
+const Header = () => {
+  const { currentUser, logout } = useContext(AuthContext);
+
   return (
     <HeaderContainer>
       <Nav>
         <Logo to={ROUTES.HOME}>SlippeReview</Logo>
         <NavLinks>
-          <NavLink to={ROUTES.LIST}>링크장 현황</NavLink>
-          <NavLink to={ROUTES.BOARD}>게시판</NavLink>
-          
-          {/* 조건부 렌더링: 로그인 상태면 로그아웃 버튼, 아니면 로그인 버튼 */}
-          {isLoggedIn ? (
-            <LogoutButton onClick={onLogout}>로그아웃</LogoutButton>
+          <NavLink to={ROUTES.LIST}>링크장 현황</NavLink>  
+          {currentUser ? (
+            <>
+              <NavLink to={ROUTES.MYPAGE}>마이페이지</NavLink> 
+              <LogoutButton onClick={logout}>로그아웃</LogoutButton>
+            </>
           ) : (
             <LoginButton to={ROUTES.LOGIN}>로그인</LoginButton>
           )}
-          
         </NavLinks>
       </Nav>
     </HeaderContainer>

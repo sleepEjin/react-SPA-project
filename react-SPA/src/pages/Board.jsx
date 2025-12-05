@@ -3,13 +3,11 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { rinksData } from '../contexts/data';
 import { BoardContainer, Button, HeaderSection, PostItem, PostList, PostMeta, PostTitle, RinkInfoBox } from './Board.styled';
 import { usePostStore } from '../stores/usePostStore';
-import { useUserStore } from '../stores/useUserStore';
 
 const Board = () => {
   const navigate = useNavigate();
   const { rinkId } = useParams(); 
   const { posts } = usePostStore();
-  const { currentUser } = useUserStore();
   const [searchTerm, setSearchTerm] = useState("");
 
   const rink = rinksData.find(r => r.id === Number(rinkId));
@@ -43,7 +41,6 @@ const Board = () => {
             style={{padding:'10px', flex:1}}
           />
           <Button onClick={() => {
-            if (!currentUser) return alert("로그인이 필요합니다.");
             navigate(`/board/rink/${rinkId}/write`);
           }}>
             후기 작성

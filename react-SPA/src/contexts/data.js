@@ -1,4 +1,3 @@
-// 1. 링크장 데이터
 export const rinksData = [
   {
     id: 1,
@@ -55,16 +54,16 @@ export const initialPosts = [
     id: 1, 
     rinkId: 1, 
     title: "롯데월드 매우 굿", 
-    content: "발볼 넓은 편인데 신발도 아프지 않고 좋네요 굿굿",
-    author: "김빙상", 
-    date: "2025-12-01" 
+    content: "발볼 넓은 편인데 신발도 아프지 않고 시설도 좋네요 굿굿",
+    author: "홍길동", 
+    date: "2025. 12. 1." 
   },
   { 
     id: 2, 
     rinkId: 2, 
-    title: "목동 주말에 사람 많아요.", 
-    content: "눈치게임이긴 하지만 방문할 때.",
-    author: "이피겨", 
-    date: "2025-12-02" 
+    title: "목동 주말에 사람 많아요", 
+    content: "눈치게임이긴 하지만 방문할 때 참고하세요",
+    author: "김민수", 
+    date: "2025. 12. 2." 
   },
 ];

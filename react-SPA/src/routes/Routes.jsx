@@ -22,8 +22,8 @@ const AppRoutes = () => {
                 <Route path={ROUTES.RINK_BOARD} element={<Board />}/>
                 
                 <Route path={ROUTES.BOARD_DETAIL} element={<PostDetail />}/>
-                <Route path={ROUTES.BOARD_WRITE} element={<PostWrite />}/>
                 <Route path={ROUTES.RINK_BOARD_WRITE} element={<PostWrite />}/>
+                <Route path={ROUTES.BOARD_EDIT} element={<PostWrite />}/>
                 
                 <Route path={ROUTES.LOGIN} element={<Login />}/>
                 <Route path={ROUTES.MYPAGE} element={<MyPage />}/>

@@ -11,6 +11,13 @@ export const usePostStore = create(
         posts: [newPost, ...state.posts] 
       })),
 
+      handleUpdatePost: (updatedPost) =>
+        set((state) => ({
+          posts: state.posts.map((post) =>
+            String(post.id) === String(updatedPost.id) ? updatedPost : post
+          ),
+        })),
+
       handleDeletePost: (id) => set((state) => ({
         posts: state.posts.filter((post) => String(post.id) !== String(id))
       })),

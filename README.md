@@ -4,7 +4,7 @@
 ⛸️ SlippeReview (슬리퍼리뷰)
 
 ## 📘 개요 (Overview)
-- SlippeReview는 서울 시내 아이스링크장의 정보와 사용자들의 생생한 방문 후기를 공유하는 SPA(Single Page Application) 서비스입니다.
+- SlippeReview는 서울 시내 아이스링크장의 정보와 사용자들의 생생한 방문 후기를 공유하는 SPA 서비스입니다.
 - 사용자는 다양한 링크장의 위치와 가격 정보를 확인하고, 방문 경험을 게시글로 작성하여 다른 스케이터들과 공유할 수 있습니다.
 
 ## 🧱 기술 스택 (Tech Stack)
@@ -18,7 +18,8 @@
 git clone https://github.com/sleepEjin/react-SPA-project.git
 
 # 2. 웹 애플리케이션 실행
-- npm run dev 실행해서 나오는 localhost 파일로 접속
+- 터미널에서 npm run dev 실행
+- 성공적으로 접속시 나오는 localhost 링크로 접속
 
 ## 📂 프로젝트 구조 (Directory Structure)
 ```text

@@ -10,7 +10,7 @@
 ## 🧱 기술 스택 (Tech Stack)
 | 구분 | 사용 기술 |
 |------|------------|
-| Frontend | React |
+| Frontend | React, vite |
 | Library | styled-components, react-router-dom, zustand |
 
 ## 🛠️ 설치 및 실행 (Installation & Run)

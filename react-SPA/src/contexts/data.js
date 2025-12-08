@@ -21,7 +21,7 @@ export const rinksData = [
     location: "서울 중구",
     time:"10:00 ~ 21:00",
     desc: "저렴한 가격과 쾌적한 시설, 주차가 편리함",
-    img: "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSw-U2gV77cH9FEsWX9Z2IiQ-DdtEV6dbyws0Hs57mcLOW3wC4tdagq_WuCpFgngKR7k_EzGN7UJkbNzD3lRt66aNkZi1dmxCUJF0kPO1Sxh3emoinzY3n0sKx4OGcbVaFnDFp6r=s680-w680-h510-rw"
+    img: "https://cdn.newskr.kr/news/photo/202212/85256_73274_436.jpg"
   },
   {
     id: 4,

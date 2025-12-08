@@ -68,7 +68,7 @@ const PostWrite = () => {
           <Description>
             {isEditMode 
               ? "작성한 내용을 수정합니다." 
-              : "다른 분들에게 도움이 되도록 솔직하고 생생한 이야기를 들려주세요."}
+              : "익명으로 작성시 게시글 수정, 삭제가 불가능합니다"}
           </Description>
         </Header>
         

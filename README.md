@@ -36,8 +36,8 @@
 | **로그인** | `POST` | `/api/members/login` | `200` | 아이디/비밀번호 검증 |
 | **중복 확인** | `GET` | `/api/members/check/{id}` | `200` | 아이디 사용 가능 여부 확인 |
 
-2️⃣ 게시글 (Posts)
-**Base URL:**: `/api/posts`
+### 2️⃣ 게시글 (Posts)
+**Base URL:** `/api/posts`
 
 | 기능 | HTTP Method | URI | 상태 코드 | 설명 |
 | :--- | :---: | :--- | :---: | :--- |

@@ -67,6 +67,7 @@ npm install
 npm run dev
 
 ## 📂 프로젝트 구조 (Directory Structure)
+```
 (Project Root)
 ├── react-SPA/          # Frontend (React + Vite)
 │   ├── src/
@@ -83,6 +84,7 @@ npm run dev
     │   └── dto/        # 데이터 전송 객체 (Request/Response)
     └── resources/
         └── application.yml # DB 및 포트(8888) 설정
+```
 
 ## 🌟 주요 기능 (Key Features)
 - 아이스링크 정보 탐색 및 상세정보 조회

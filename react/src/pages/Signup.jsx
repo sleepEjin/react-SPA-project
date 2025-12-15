@@ -5,7 +5,7 @@ import { useUserStore } from '../stores/useUserStore';
 
 const SignUp = () => {
   const navigate = useNavigate();
-  const { signup } = useUserStore();
+  const { signup, checkId } = useUserStore();
   
   const [formData, setFormData] = useState({
     id: '',
@@ -19,7 +19,7 @@ const SignUp = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!formData.id || !formData.password || !formData.nickname) {
@@ -31,11 +31,16 @@ const SignUp = () => {
       return;
     }
 
-    const success = signup({
+    const isAvailable = await checkId(formData.id);
+    if (!isAvailable) {
+      alert("이미 사용 중인 아이디입니다.");
+      return;
+    }
+
+    const success = await signup({
       id: formData.id,
       password: formData.password,
-      nickname: formData.nickname,
-      joinDate: new Date().toLocaleDateString()
+      nickname: formData.nickname
     });
 
     if (success) {
@@ -47,10 +52,32 @@ const SignUp = () => {
     <Container>
       <Form onSubmit={handleSubmit}>
         <h2>회원가입</h2>
-        <Input name="id" placeholder="아이디" value={formData.id} onChange={handleChange} />
-        <Input type="password" name="password" placeholder="비밀번호" value={formData.password} onChange={handleChange} />
-        <Input type="password" name="confirmPassword" placeholder="비밀번호 확인" value={formData.confirmPassword} onChange={handleChange} />
-        <Input name="nickname" placeholder="닉네임" value={formData.nickname} onChange={handleChange} />
+        <Input 
+          name="id" 
+          placeholder="아이디" 
+          value={formData.id} 
+          onChange={handleChange} 
+        />
+        <Input 
+          type="password" 
+          name="password" 
+          placeholder="비밀번호" 
+          value={formData.password} 
+          onChange={handleChange} 
+        />
+        <Input 
+          type="password" 
+          name="confirmPassword" 
+          placeholder="비밀번호 확인" 
+          value={formData.confirmPassword} 
+          onChange={handleChange} 
+        />
+        <Input 
+          name="nickname" 
+          placeholder="닉네임" 
+          value={formData.nickname} 
+          onChange={handleChange} 
+        />
         <Button type="submit">가입하기</Button>
       </Form>
     </Container>

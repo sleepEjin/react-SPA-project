@@ -10,10 +10,10 @@ const LoginPage = () => {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
-    const success = login(userId, password);
+    const success = await login(userId, password); 
     
     if (success) {
       navigate('/');

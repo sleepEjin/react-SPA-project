@@ -7,8 +7,12 @@ import { usePostStore } from '../stores/usePostStore';
 const Board = () => {
   const navigate = useNavigate();
   const { rinkId } = useParams(); 
-  const { posts } = usePostStore();
+  const { posts, fetchPosts } = usePostStore();
   const [searchTerm, setSearchTerm] = useState("");
+
+  useEffect(() => {
+    fetchPosts(rinkId);
+  }, [fetchPosts, rinkId]);
 
   const rink = rinksData.find(r => r.id === Number(rinkId));
   const rinkPosts = posts.filter(post => post.rinkId === Number(rinkId));

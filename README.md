@@ -36,39 +36,26 @@
 | **로그인** | `POST` | `/api/members/login` | `200` | 아이디/비밀번호 검증 |
 | **중복 확인** | `GET` | `/api/members/check/{id}` | `200` | 아이디 사용 가능 여부 확인 |
 
-#### 📝 Request / Response 예시
-
-**회원가입 (POST)**
-- **Request Body**
-```json
-{
-  "id": "skater123",
-  "password": "password123!",
-  "nickname": "김연아키즈"
-}
-
 2️⃣ 게시글 (Posts)
-Base URL: /api/posts
-기능,HTTP Method,URI,상태 코드,설명
-목록 조회,GET,/api/posts?rinkId={id},200,전체 또는 특정 링크장 후기 조회
-상세 조회,GET,/api/posts/{id},200,게시글 상세 내용 조회
-작성,POST,/api/posts,201,새 후기 등록
-수정,PUT,/api/posts/{id},200,제목 및 내용 수정
-삭제,DELETE,/api/posts/{id},204,게시글 삭제
+**Base URL:**: `/api/posts`
+
+| 기능 | HTTP Method | URI | 상태 코드 | 설명 |
+| :--- | :---: | :--- | :---: | :--- |
+| 목록 조회 | `GET` | `/api/posts?rinkId={id}` | `200` | 전체 또는 특정 링크장 후기 조회 |
+| 상세 조회 |`GET` | `/api/posts/{id}` |`200` | 게시글 상세 내용 조회 |
+| 작성 | `POST` |`/api/posts` | `201` | 새 후기 등록 |
+| 수정 | `PUT` | `/api/posts/{id}` | `200` | 제목 및 내용 수정 |
+| 삭제 | `DELETE` | `/api/posts/{id}` | `204` | 게시글 삭제 |
 
 🛠️ 설치 및 실행 (Installation & Run)
 1. Backend (Spring Boot)
 서버는 8888 포트에서 실행됩니다.
-
-Bash
 
 # 1. rest-project 폴더로 이동 (IDE 열기)
 # 2. ProjectApplication.java 실행 (Run)
 # -> Started ProjectApplication in ... seconds (JVM running for ...)
 2. Frontend (React)
 프론트엔드는 3000 포트에서 실행되며, API 요청을 8888 포트로 프록시합니다.
-
-Bash
 
 # 1. react-SPA 폴더로 이동
 cd react-SPA
@@ -101,6 +88,3 @@ npm run dev
 - 아이스링크 정보 탐색 및 상세정보 조회
 - 링크장별 후기 게시판 등록, 조회, 수정, 삭제 (CRUD)
 - 아이디, 비밀번호, 닉네임 유효성 검사를 통한 회원가입 및 로그인
-
-## 💡 학습 포인트 (Learning Points)
-- React의 주요 개념(Hooks, Props, Routing 등) 학습한 라이브러리 등을 활용

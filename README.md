@@ -1,4 +1,4 @@
-# ⛸️ SlippeReview (슬리퍼리뷰) - Full Stack Ver.
+# ⛸️ SlippeReview
 
 ## 📘 개요 (Overview)
 **SlippeReview**는 서울 시내 아이스링크장의 정보와 사용자들의 생생한 방문 후기를 공유하는 풀스택 웹 애플리케이션입니다.

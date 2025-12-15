@@ -50,10 +50,10 @@
 ## 🛠️ 설치 및 실행 (Installation & Run)
 1. Backend (Spring Boot)
 서버는 **8888 포트** 포트에서 실행됩니다.
-```bash
+```
 # 1. rest-project 폴더로 이동 (IDE 열기)
 # 2. ProjectApplication.java 실행 (Run)
-# -> Started ProjectApplication in ... seconds (JVM running for ...)
+ -> Started ProjectApplication in ... seconds (JVM running for ...)
 ```
 2. Frontend (React)
 프론트엔드는 **3000 포트**에서 실행되며, API 요청을 **8888 포트**로 프록시합니다.

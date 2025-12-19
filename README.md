@@ -70,7 +70,7 @@ Dirty Checking: 수정 로직 시 EntityManager.merge 대신 엔티티의 비즈
 
     JDBC URL: jdbc:h2:mem:testdb (ID: **sa**, PW: **1234**)
 
-3. Frontend (React)
+### 2. Frontend (React)
 Proxy 설정: package.json 또는 vite.config.js에 아래 설정 추가
 ```
 {

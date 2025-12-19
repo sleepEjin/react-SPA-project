@@ -24,6 +24,21 @@
 
 ---
 
+## 🏗️ 도메인 모델 및 설계 특징
+### 1. 엔티티 구조
+Member (회원): userId, userName 등 상세 회원 정보 관리
+
+Rink (아이스링크): rinkId, rinkName, imageUrl 등 링크장 시설 정보 관리
+
+Post (후기): postId, postTitle, postContent를 포함하며 Member와 Rink를 참조하는 다대일(N:1) 관계 형성
+
+### 2. 설계 핵심 포인트
+DTO 패턴 적용: 모든 통신에 엔티티 대신 내부 정적 클래스 구조의 DTO(Create, Update, Response)를 사용하여 보안성과 유연성 확보
+
+명확한 필드 구분: postId, rinkName 등 필드명에 접두사를 부여하여 프론트엔드 데이터 매핑 시 가독성 극대화
+
+Dirty Checking: 수정 로직 시 EntityManager.merge 대신 엔티티의 비즈니스 메서드를 통한 변경 감지 활용
+
 ## 📡 API 명세 (API Specification)
 백엔드 서버는 **RESTful 원칙**을 따르며, 모든 데이터는 **JSON** 포맷으로 주고받습니다.
 
@@ -49,22 +64,18 @@
 
 ## 🛠️ 설치 및 실행 (Installation & Run)
 1. Backend (Spring Boot)
-서버는 **8888 포트** 포트에서 실행됩니다.
-```
-# 1. rest-project 폴더로 이동 (IDE 열기)
-# 2. ProjectApplication.java 실행 (Run)
- -> Started ProjectApplication in ... seconds (JVM running for ...)
-```
+포트: 8080 (또는 8888)
+H2 콘솔 주소: http://localhost:8080/h2-console
+JDBC URL: jdbc:h2:mem:testdb (ID: **sa**, PW: **1234**)
+
 2. Frontend (React)
-프론트엔드는 **3000 포트**에서 실행되며, API 요청을 **8888 포트**로 프록시합니다.
+Proxy 설정: package.json 또는 vite.config.js에 아래 설정 추가
 ```
-# 1. react-SPA 폴더로 이동
-cd react-SPA
-# 2. 의존성 설치 (최초 1회)
-npm install
-# 3. 개발 서버 실행
-npm run dev
+{
+  "proxy": "http://localhost:8080"
+}
 ```
+실행 : **npm install** 후 ** npm run dev**
 
 ## 📂 프로젝트 구조 (Directory Structure)
 ```
@@ -76,14 +87,12 @@ npm run dev
 │   └── vite.config.js  # Proxy 설정 포함
 │
 └── rest-project/       # Backend (Spring Boot)
-    ├── src/main/java/com/kh/project/
-    │   ├── controller/ # MemberController, PostController
-    │   ├── service/    # 비즈니스 로직 (ServiceImpl)
-    │   ├── repository/ # JPA Repository
-    │   ├── entity/     # DB 테이블 매핑 (Member, Post)
-    │   └── dto/        # 데이터 전송 객체 (Request/Response)
-    └── resources/
-        └── application.yml # DB 및 포트(8888) 설정
+    ├──src/main/java/com/kh/project/
+    ├── controller/   # REST API 엔드포인트
+    ├── service/      # 비즈니스 로직 (Interface/ServiceImpl 분리)
+    ├── repository/   # 데이터 접근 계층 (EntityManager 직접 사용)
+    ├── entity/       # DB 테이블 매핑 및 연관관계 정의
+    └── dto/          # 데이터 전송 객체 (정적 내부 클래스 구조)
 ```
 
 ## 🌟 주요 기능 (Key Features)

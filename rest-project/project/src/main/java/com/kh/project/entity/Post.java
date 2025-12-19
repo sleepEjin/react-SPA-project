@@ -1,47 +1,38 @@
 package com.kh.project.entity;
 
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import org.hibernate.annotations.CreationTimestamp;
-import org.springframework.data.annotation.LastModifiedDate;
-
-import java.time.LocalDateTime;
+import lombok.*;
 
 @Entity
+@Table(name = "post")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Post extends BaseTimeEntity{
+@AllArgsConstructor
+@Builder
+public class Post extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "post_id")
+    private Long postId;
 
-    @Column(nullable = false)
-    private Long rinkId;
+    @Column(name = "post_title", nullable = false)
+    private String postTitle;
 
-    @Column(nullable = false)
-    private String title;
+    @Column(name = "post_content", columnDefinition = "TEXT")
+    private String postContent;
 
-    @Lob
-    @Column(columnDefinition = "TEXT")
-    private String content;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "member_id")
+    private Member member;
 
-    @Column(nullable = false)
-    private String author;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "rink_id")
+    private Rink rink;
 
-    @Builder
-    public Post(Long rinkId, String title, String content, String author) {
-        this.rinkId = rinkId;
-        this.title = title;
-        this.content = content;
-        this.author = author;
-    }
-
-    public void update(String title, String content) {
-        this.title = title;
-        this.content = content;
+    // 수정을 위한 비즈니스 로직
+    public void updatePost(String postTitle, String postContent) {
+        this.postTitle = postTitle;
+        this.postContent = postContent;
     }
 }

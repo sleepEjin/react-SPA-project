@@ -1,36 +1,29 @@
 package com.kh.project.entity;
 
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
+@Table(name = "rink")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Rink {
+@AllArgsConstructor
+@Builder
+public class Rink extends BaseTimeEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "rink_id")
+    private Long rinkId; // 기존 id에서 변경
 
-    private String name;
+    @Column(name = "rink_name", nullable = false)
+    private String rinkName; // 기존 name에서 변경
 
     private String location;
 
-    private String time;
-
-    @Column(length = 1000)
+    @Column(columnDefinition = "TEXT")
     private String description;
 
-    private String img;
-
-    @Builder
-    public Rink(String name, String location, String time, String description, String img) {
-        this.name = name;
-        this.location = location;
-        this.time = time;
-        this.description = description;
-        this.img = img;
-    }
+    @Column(name = "image_url")
+    private String imageUrl; // 이미지 경로 필드
 }

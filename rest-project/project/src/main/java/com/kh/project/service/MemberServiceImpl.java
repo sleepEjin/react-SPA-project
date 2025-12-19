@@ -1,14 +1,12 @@
 package com.kh.project.service;
-
-import com.kh.project.dto.MemberCheckResponse;
-import com.kh.project.dto.MemberLoginRequest;
-import com.kh.project.dto.MemberResponse;
-import com.kh.project.dto.MemberSignupRequest;
+import com.kh.project.dto.MemberDto;
 import com.kh.project.entity.Member;
 import com.kh.project.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -19,27 +17,46 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     @Transactional
-    public MemberResponse signup(MemberSignupRequest request) {
-        if (memberRepository.existsById(request.getId())) {
-            throw new IllegalArgumentException("이미 존재하는 아이디입니다.");
-        }
-
-        Member member = request.toEntity();
-        Member savedMember = memberRepository.save(member);
-        return MemberResponse.from(savedMember);
+    public String createMember(MemberDto.Create createMemberDto) {
+        Member member = createMemberDto.toEntity();
+        memberRepository.save(member);
+        return member.getUserId();
     }
 
     @Override
-    public MemberResponse login(MemberLoginRequest request) {
-        Member member = memberRepository.findByIdAndPassword(request.getId(), request.getPassword())
-                .orElseThrow(() -> new IllegalArgumentException("아이디 또는 비밀번호가 일치하지 않습니다."));
-
-        return MemberResponse.from(member);
+    public List<MemberDto.Response> getAllMembers() {
+        return memberRepository.findAll().stream().map(this::convertToResponse).collect(Collectors.toList());
     }
 
     @Override
-    public MemberCheckResponse checkId(String id) {
-        boolean exists = memberRepository.existsById(id);
-        return new MemberCheckResponse(!exists); // 존재하지 않으면 사용 가능(true)
+    public MemberDto.Response getMemberByUserId(String userId) {
+        Member member = memberRepository.findByUserId(userId).orElseThrow(() -> new IllegalArgumentException("회원 없음"));
+        return convertToResponse(member);
+    }
+
+    @Override
+    @Transactional
+    public MemberDto.Response updateMember(String userId, MemberDto.Update updateMemberDto) {
+        Member member = memberRepository.findByUserId(userId).orElseThrow(() -> new IllegalArgumentException("회원 없음"));
+        member.updateMember(updateMemberDto.getUser_name(), updateMemberDto.getEmail(), updateMemberDto.getGender(),
+                updateMemberDto.getAge(), updateMemberDto.getPhone(), updateMemberDto.getAddress());
+        return convertToResponse(member);
+    }
+
+    @Override
+    @Transactional
+    public void deleteMember(String userId) {
+        Member member = memberRepository.findByUserId(userId).orElseThrow(() -> new IllegalArgumentException("회원 없음"));
+        memberRepository.delete(member);
+    }
+
+    @Override
+    public List<MemberDto.Response> getMembersByName(String keyword) {
+        return memberRepository.findByNameKeyword(keyword).stream().map(this::convertToResponse).collect(Collectors.toList());
+    }
+
+    private MemberDto.Response convertToResponse(Member m) {
+        return MemberDto.Response.of(m.getId(), m.getUserId(), m.getUserName(), m.getEmail(),
+                m.getGender(), m.getAge(), m.getPhone(), m.getAddress(), m.getCreateDate(), m.getModifyDate());
     }
 }

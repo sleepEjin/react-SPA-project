@@ -1,5 +1,6 @@
 package com.kh.project.entity;
 
+import com.kh.project.enums.CommonEnums;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -13,14 +14,19 @@ public class Post extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "post_id")
     private Long postId;
 
-    @Column(name = "post_title", nullable = false)
+    @Column(length= 50, nullable = false)
     private String postTitle;
 
-    @Column(name = "post_content", columnDefinition = "TEXT")
+    @Column(nullable = false)
+    @Lob
     private String postContent;
+
+    @Column(length = 1, nullable = false)
+    @Enumerated(EnumType.STRING)
+    @Builder.Default
+    private CommonEnums.Status status = CommonEnums.Status.Y;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")

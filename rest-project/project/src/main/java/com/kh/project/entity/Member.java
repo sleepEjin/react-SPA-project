@@ -1,5 +1,6 @@
 package com.kh.project.entity;
 
+import com.kh.project.enums.CommonEnums;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -14,25 +15,38 @@ public class Member extends BaseTimeEntity {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "user_id", nullable = false, unique = true)
+    @Column(length = 50, nullable = false)
     private String userId;
 
-    @Column(name = "user_pwd", nullable = false)
+    @Column(length = 50, nullable = false)
     private String userPwd;
 
-    @Column(name = "user_name", nullable = false)
+    @Column(length =  50, nullable = false)
     private String userName;
 
+    @Column(length = 100)
     private String email;
 
+    @Column(length = 1)
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
     private Integer age;
+
+    @Column(length = 30)
     private String phone;
+
+    @Column(length = 100)
     private String address;
 
-    public enum Gender { MALE, FEMALE }
+    @Column(length = 1, nullable = false)
+    @Enumerated(EnumType.STRING)
+    @Builder.Default
+    private CommonEnums.Status status = CommonEnums.Status.Y;
+
+    public enum Gender {
+        M, F
+    }
 
     // 수정 로직 (더티 체킹용)
     public void updateMember(String userName, String email, Gender gender, Integer age, String phone, String address) {

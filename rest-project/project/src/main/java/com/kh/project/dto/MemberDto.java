@@ -26,6 +26,12 @@ public class MemberDto {
     }
 
     @Getter @Setter @NoArgsConstructor @AllArgsConstructor
+    public static class Login {
+        private String user_id;
+        private String user_pwd;
+    }
+
+    @Getter @Setter @NoArgsConstructor @AllArgsConstructor
     public static class Update {
         private String user_name;
         private String email;

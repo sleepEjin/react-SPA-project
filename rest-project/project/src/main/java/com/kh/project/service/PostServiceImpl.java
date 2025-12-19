@@ -83,7 +83,7 @@ public class PostServiceImpl implements PostService {
                 p.getPostTitle(),
                 p.getPostContent(),
                 p.getMember().getUserName(), // 작성자 이름 추출
-                p.getRink().getName(),       // 링크장 이름 추출
+                p.getRink().getRinkName(),       // 링크장 이름 추출
                 p.getCreateDate(),
                 p.getModifyDate()
         );

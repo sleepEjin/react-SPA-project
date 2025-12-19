@@ -19,6 +19,12 @@ public class MemberController {
         return ResponseEntity.status(HttpStatus.CREATED).body(memberService.createMember(request));
     }
 
+    @PostMapping("/login") // 로그인 API
+    public ResponseEntity<MemberDto.Response> login(@RequestBody MemberDto.Login request) {
+        MemberDto.Response response = memberService.login(request);
+        return ResponseEntity.ok(response);
+    }
+
     @GetMapping
     public ResponseEntity<List<MemberDto.Response>> getAll() {
         return ResponseEntity.ok(memberService.getAllMembers());

@@ -63,12 +63,12 @@ Dirty Checking: 수정 로직 시 EntityManager.merge 대신 엔티티의 비즈
 | 삭제 | `DELETE` | `/api/posts/{id}` | `204` | 게시글 삭제 |
 
 ## 🛠️ 설치 및 실행 (Installation & Run)
-1. Backend (Spring Boot)
-포트: 8080 (또는 8888)
+### 1. Backend (Spring Boot)
+    포트: 8080 (또는 8888)
 
-H2 콘솔 주소: http://localhost:8080/h2-console
+    H2 콘솔 주소: http://localhost:8080/h2-console
 
-JDBC URL: jdbc:h2:mem:testdb (ID: **sa**, PW: **1234**)
+    JDBC URL: jdbc:h2:mem:testdb (ID: **sa**, PW: **1234**)
 
 3. Frontend (React)
 Proxy 설정: package.json 또는 vite.config.js에 아래 설정 추가

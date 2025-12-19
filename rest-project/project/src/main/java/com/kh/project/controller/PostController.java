@@ -1,8 +1,6 @@
 package com.kh.project.controller;
 
-import com.kh.project.dto.PostCreateRequest;
-import com.kh.project.dto.PostResponse;
-import com.kh.project.dto.PostUpdateRequest;
+import com.kh.project.dto.PostDto;
 import com.kh.project.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -18,30 +16,37 @@ public class PostController {
 
     private final PostService postService;
 
-    @GetMapping
-    public ResponseEntity<List<PostResponse>> getPosts(@RequestParam(required = false) Long rinkId) {
-        return ResponseEntity.ok(postService.getPosts(rinkId));
-    }
-
-    @GetMapping("/{id}")
-    public ResponseEntity<PostResponse> getPost(@PathVariable Long id) {
-        return ResponseEntity.ok(postService.getPost(id));
-    }
-
+    // 게시글 작성
     @PostMapping
-    public ResponseEntity<PostResponse> createPost(@RequestBody PostCreateRequest request) {
-        PostResponse response = postService.createPost(request);
-        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+    public ResponseEntity<Long> createPost(@RequestBody PostDto.Create request) {
+        Long postId = postService.createPost(request);
+        return ResponseEntity.status(HttpStatus.CREATED).body(postId);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<PostResponse> updatePost(@PathVariable Long id, @RequestBody PostUpdateRequest request) {
-        return ResponseEntity.ok(postService.updatePost(id, request));
+    // 게시글 전체 목록 조회
+    @GetMapping
+    public ResponseEntity<List<PostDto.Response>> getAllPosts() {
+        return ResponseEntity.ok(postService.getAllPosts());
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletePost(@PathVariable Long id) {
-        postService.deletePost(id);
-        return ResponseEntity.noContent().build();
+    // 게시글 상세 조회
+    @GetMapping("/{postId}")
+    public ResponseEntity<PostDto.Response> getPost(@PathVariable Long postId) {
+        return ResponseEntity.ok(postService.getPostByPostId(postId));
+    }
+
+    // 게시글 수정
+    @PutMapping("/{postId}")
+    public ResponseEntity<PostDto.Response> updatePost(
+            @PathVariable Long postId,
+            @RequestBody PostDto.Update request) {
+        return ResponseEntity.ok(postService.updatePost(postId, request));
+    }
+
+    // 게시글 삭제
+    @DeleteMapping("/{postId}")
+    public ResponseEntity<Void> deletePost(@PathVariable Long postId) {
+        postService.deletePost(postId);
+        return ResponseEntity.noContent().build(); // 204 No Content
     }
 }

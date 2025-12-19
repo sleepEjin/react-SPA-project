@@ -1,11 +1,12 @@
 package com.kh.project.repository;
 
 import com.kh.project.entity.Post;
-import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
+import java.util.Optional;
 
-public interface PostRepository extends JpaRepository<Post, Long> {
-    List<Post> findAllByRinkIdOrderByDateDesc(Long rinkId);
-
-    List<Post> findAllByOrderByDateDesc();
+public interface PostRepository {
+    void save(Post post);
+    Optional<Post> findById(Long id);
+    List<Post> findAll();
+    void delete(Post post);
 }

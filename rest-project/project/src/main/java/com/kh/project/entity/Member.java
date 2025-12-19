@@ -1,38 +1,46 @@
 package com.kh.project.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import org.hibernate.annotations.CreationTimestamp;
-
-import java.time.LocalDate;
+import jakarta.persistence.*;
+import lombok.*;
 
 @Entity
+@Table(name = "member")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Member {
+@AllArgsConstructor
+@Builder
+public class Member extends BaseTimeEntity {
 
-    @Id // 사용자가 입력한 아이디를 PK로 사용 (중복 방지)
-    @Column(nullable = false)
-    private String id;
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    @Column(nullable = false)
-    private String password;
+    @Column(name = "user_id", nullable = false, unique = true)
+    private String userId;
 
-    @Column(nullable = false)
-    private String nickname;
+    @Column(name = "user_pwd", nullable = false)
+    private String userPwd;
 
-    @CreationTimestamp // 가입일 자동 생성
-    private LocalDate joinDate;
+    @Column(name = "user_name", nullable = false)
+    private String userName;
 
-    @Builder
-    public Member(String id, String password, String nickname) {
-        this.id = id;
-        this.password = password;
-        this.nickname = nickname;
+    private String email;
+
+    @Enumerated(EnumType.STRING)
+    private Gender gender;
+
+    private Integer age;
+    private String phone;
+    private String address;
+
+    public enum Gender { MALE, FEMALE }
+
+    // 수정 로직 (더티 체킹용)
+    public void updateMember(String userName, String email, Gender gender, Integer age, String phone, String address) {
+        this.userName = userName;
+        this.email = email;
+        this.gender = gender;
+        this.age = age;
+        this.phone = phone;
+        this.address = address;
     }
 }

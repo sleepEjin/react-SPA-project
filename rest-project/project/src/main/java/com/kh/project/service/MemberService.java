@@ -1,17 +1,13 @@
 package com.kh.project.service;
 
-import com.kh.project.dto.MemberCheckResponse;
-import com.kh.project.dto.MemberLoginRequest;
-import com.kh.project.dto.MemberResponse;
-import com.kh.project.dto.MemberSignupRequest;
+import com.kh.project.dto.MemberDto;
+import java.util.List;
 
 public interface MemberService {
-    // 1. 회원가입
-    MemberResponse signup(MemberSignupRequest request);
-
-    // 2. 로그인
-    MemberResponse login(MemberLoginRequest request);
-
-    // 3. 아이디 중복 확인
-    MemberCheckResponse checkId(String id);
+    String createMember(MemberDto.Create createMemberDto);
+    List<MemberDto.Response> getAllMembers();
+    MemberDto.Response getMemberByUserId(String userId);
+    MemberDto.Response updateMember(String userId, MemberDto.Update updateMemberDto);
+    void deleteMember(String userId);
+    List<MemberDto.Response> getMembersByName(String keyword);
 }

@@ -80,12 +80,7 @@ Request (POST /api/posts)JSON
 ```
 ## 🛠️ 설치 및 실행 (Installation & Run)
 ### 1. Backend (Spring Boot)
-    포트: 8080 (또는 8888)
-
-    H2 콘솔 주소: http://localhost:8080/h2-console
-
-    JDBC URL: jdbc:h2:mem:testdb (ID: **sa**, PW: **1234**)
-
+      H2 콘솔 주소: http://localhost:8888
 ### 2. Frontend (React)
 Proxy 설정: package.json 또는 vite.config.js에 아래 설정 추가
 ```

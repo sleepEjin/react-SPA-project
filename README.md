@@ -32,13 +32,6 @@ Rink (아이스링크): rinkId, rinkName, imageUrl 등 링크장 시설 정보 �
 
 Post (후기): postId, postTitle, postContent를 포함하며 Member와 Rink를 참조하는 다대일(N:1) 관계 형성
 
-### 2. 설계 핵심 포인트
-DTO 패턴 적용: 모든 통신에 엔티티 대신 내부 정적 클래스 구조의 DTO(Create, Update, Response)를 사용하여 보안성과 유연성 확보
-
-명확한 필드 구분: postId, rinkName 등 필드명에 접두사를 부여하여 프론트엔드 데이터 매핑 시 가독성 극대화
-
-Dirty Checking: 수정 로직 시 EntityManager.merge 대신 엔티티의 비즈니스 메서드를 통한 변경 감지 활용
-
 ## 📡 API 명세 (API Specification)
 백엔드 서버는 **RESTful 원칙**을 따르며, 모든 데이터는 **JSON** 포맷으로 주고받습니다.
 

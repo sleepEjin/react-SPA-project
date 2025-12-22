@@ -26,11 +26,11 @@ public class MemberServiceImpl implements MemberService {
     @Override
     public MemberDto.Response login(MemberDto.Login loginDto) {
         // 1. 아이디로 회원 조회
-        Member member = memberRepository.findByUserId(loginDto.getUser_id())
+        Member member = memberRepository.findByUserId(loginDto.getUserId())
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 아이디입니다."));
 
         // 2. 비밀번호 일치 여부 확인 (평문 비교)
-        if (!member.getUserPwd().equals(loginDto.getUser_pwd())) {
+        if (!member.getUserPwd().equals(loginDto.getUserPwd())) {
             throw new IllegalArgumentException("비밀번호가 일치하지 않습니다.");
         }
 

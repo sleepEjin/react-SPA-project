@@ -8,8 +8,8 @@ public class MemberDto {
 
     @Getter @Setter @NoArgsConstructor @AllArgsConstructor
     public static class Create {
-        private String user_id;
-        private String user_pwd;
+        private String userId;
+        private String userPwd;
         private String user_name;
         private String email;
         private Member.Gender gender;
@@ -19,7 +19,7 @@ public class MemberDto {
 
         public Member toEntity() {
             return Member.builder()
-                    .userId(user_id).userPwd(user_pwd).userName(user_name)
+                    .userId(userId).userPwd(userPwd).userName(user_name)
                     .email(email).gender(gender).age(age).phone(phone).address(address)
                     .build();
         }
@@ -27,8 +27,8 @@ public class MemberDto {
 
     @Getter @Setter @NoArgsConstructor @AllArgsConstructor
     public static class Login {
-        private String user_id;
-        private String user_pwd;
+        private String userId;
+        private String userPwd;
     }
 
     @Getter @Setter @NoArgsConstructor @AllArgsConstructor
@@ -44,7 +44,7 @@ public class MemberDto {
     @Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder
     public static class Response {
         private Long id;
-        private String user_id;
+        private String userId;
         private String user_name;
         private String email;
         private Member.Gender gender;
@@ -54,11 +54,11 @@ public class MemberDto {
         private LocalDateTime create_date;
         private LocalDateTime modify_date;
 
-        public static Response of(Long id, String user_id, String user_name, String email,
+        public static Response of(Long id, String userId, String user_name, String email,
                                   Member.Gender gender, Integer age, String phone, String address,
                                   LocalDateTime create_date, LocalDateTime modify_date) {
             return Response.builder()
-                    .id(id).user_id(user_id).user_name(user_name).email(email)
+                    .id(id).userId(userId).user_name(user_name).email(email)
                     .gender(gender).age(age).phone(phone).address(address)
                     .create_date(create_date).modify_date(modify_date)
                     .build();

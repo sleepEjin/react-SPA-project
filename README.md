@@ -59,7 +59,7 @@ Post (후기): postId, postTitle, postContent를 포함하며 Member와 Rink를 
 Request (POST /api/members)
 
 JSON
-
+```
 {
   "userId": "iceskater123",
   "password": "password123!",
@@ -67,7 +67,7 @@ JSON
   "email": "skater@example.com"
 }
 Response (201 Created)
-
+```
 JSON
 
 "회원가입이 완료되었습니다." (String)
@@ -75,23 +75,25 @@ JSON
 Request (POST /api/members/login)
 
 JSON
-
+```
 {
   "userId": "iceskater123",
   "password": "password123!"
 }
 Response (200 OK)
-
+```
 JSON
-
+```
 {
   "id": 1,
   "userId": "iceskater123",
   "userName": "김철수",
 }
-
+```
 📝 Request / Response 예시 (게시글 작성)
-Request (POST /api/posts)JSON{
+Request (POST /api/posts)JSON
+```
+{
   "postTitle": "주말 롯데월드 링크 후기",
   "postContent": "사람이 많았지만 빙질은 좋았습니다.",
   "rinkId": 1,
@@ -107,7 +109,7 @@ Request (GET /api/posts/10)(No Body)Response (200 OK)JSON{
   "rinkName": "롯데월드 아이스링크",
   "createdDate": "2024-12-20T10:00:00"
 }
-
+```
 ## 🛠️ 설치 및 실행 (Installation & Run)
 ### 1. Backend (Spring Boot)
     포트: 8080 (또는 8888)

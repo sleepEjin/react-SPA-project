@@ -66,7 +66,6 @@ JSON
   "userName": "김철수",
   "email": "skater@example.com"
 }
-Response (201 Created)
 ```
 
 📝 Request / Response 예시 (게시글 작성)

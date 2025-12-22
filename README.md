@@ -68,28 +68,7 @@ JSON
 }
 Response (201 Created)
 ```
-JSON
 
-"회원가입이 완료되었습니다." (String)
-📝 Request / Response 예시 (로그인)
-Request (POST /api/members/login)
-
-JSON
-```
-{
-  "userId": "iceskater123",
-  "password": "password123!"
-}
-Response (200 OK)
-```
-JSON
-```
-{
-  "id": 1,
-  "userId": "iceskater123",
-  "userName": "김철수",
-}
-```
 📝 Request / Response 예시 (게시글 작성)
 Request (POST /api/posts)JSON
 ```
@@ -98,16 +77,6 @@ Request (POST /api/posts)JSON
   "postContent": "사람이 많았지만 빙질은 좋았습니다.",
   "rinkId": 1,
   "userId": "iceskater123"
-}
-Response (201 Created)JSON10 (생성된 postId 반환)
-📝 Request / Response 예시 (상세 조회)
-Request (GET /api/posts/10)(No Body)Response (200 OK)JSON{
-  "postId": 10,
-  "postTitle": "주말 롯데월드 링크 후기",
-  "postContent": "사람이 많았지만 빙질은 좋았습니다.",
-  "author": "김철수",
-  "rinkName": "롯데월드 아이스링크",
-  "createdDate": "2024-12-20T10:00:00"
 }
 ```
 ## 🛠️ 설치 및 실행 (Installation & Run)
